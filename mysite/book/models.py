@@ -14,11 +14,17 @@ class Publisher(models.Model):
     website = models.URLField()
 
 class Author(models.Model):
+    def __str__(self):
+        return self.last_name
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=40)
     email = models.EmailField()
 
 class Book(models.Model):
+    def __str__(self):
+        return self.title
+    class Meta:
+        ordering = ['title']
     title = models.CharField(max_length=100)
     authors = models.ManyToManyField(Author)
     publisher = models.ForeignKey(Publisher)

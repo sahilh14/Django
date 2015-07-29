@@ -16,10 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from polls import views as p_views
+from contact import views as c_views
+from book import views as b_views
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', p_views.main),
     url(r'^book/', include('book.urls')),
+    url(r'^$', p_views.main),
+    url(r'^contact/$', c_views.contact),
+    url(r'^contact/thanks/$', c_views.thanks),
 ]
